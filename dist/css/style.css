@@ -1,0 +1,94 @@
+html {
+	height: 100%;
+}
+
+body {
+	font-family: 'Droid Serif', serif;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map-canvas {
+	height: 100%;
+	width: 100%;
+}
+
+#map {
+	height: 350px;
+}
+
+.search-bar {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+  	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  	display: flex;
+  	height: 32px;
+  	margin-left: 20px;
+  	max-width: 500px;
+  	position: fixed;
+  	top: 20px;
+  	width: 90%;
+  	z-index: 101;
+}
+
+.search-area {
+  	-moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+  	border: none;
+  	box-sizing: border-box;
+  	display: block;
+  	font-size: 15px;
+  	height: 100%;
+  	line-height: 20px;
+  	margin: 0px;
+  	outline: 0;
+  	padding-left: 10px;
+  	padding: 0px;
+  	width: 100%;
+}
+
+.search-area:focus,
+.settings-area:focus {
+  	border: 2px solid #FF9800;
+}
+
+.fa {
+	color: #FFFFFF;
+}
+
+.search-button {
+	-moz-border-radius: 0px 8px 8px 0px;
+	-webkit-border-radius: 0px 8px 8px 0px;
+	background-color:#ffc477;
+	border:1px solid #eeb44f;
+	color:#ffffff;
+	display:inline-block;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF9900', endColorstr='#FFC477');
+	font-family:Arial;
+	font-size:16px;
+	font-weight:normal;
+	height: 32px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #cc9f52;
+	width: 74px;
+ 	-moz-box-shadow:inset 0px 6px 6px 0px #fce2c1;
+ 	-webkit-box-shadow:inset 0px 6px 6px 0px #fce2c1;
+ 	box-shadow:inset 0px 6px 6px 0px #fce2c1;
+    background:-o-linear-gradient(#FF9900 51%, #FFC477 54%);
+    background:-webkit-linear-gradient(#FF9900 51%, #FFC477 54%);
+    background:linear-gradient(#FF9900 51%, #FFC477 54%);
+}
+
+.search-button:hover {
+	background-color:#ff9900;
+	background:-moz-linear-gradient( center top, #FFC477 51%, #FF9900 54% );
+	background:-ms-linear-gradient( top, #FFC477 51%, #FF9900 54% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(51%, #FFC477), color-stop(54%, #FF9900) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFC477', endColorstr='#FF9900');
+}
+
+.search-button:active {
+    vertical-align: top;
+    padding: 8px 13px 6px;
+}
