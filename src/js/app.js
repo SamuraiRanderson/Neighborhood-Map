@@ -89,6 +89,13 @@ var ViewModel = function () {
 
 $(loadData);
 
+     var pinIcon = new google.maps.MarkerImage('images/pegasus.png', /* Custom map marker */
+                null, /* size is determined at runtime */
+                null, /* origin is 0,0 */
+                null, /* anchor is bottom center of the scaled image */
+                new google.maps.Size(42, 42)
+                );
+
 // ** Adding the markers to the map for each location in the array. **  //
 
      var marker;
@@ -96,6 +103,7 @@ $(loadData);
                marker = new google.maps.Marker({
                     position: new google.maps.LatLng(Model[i].lat, Model[i].lng),
                     map: map,
+                    icon: pinIcon,
                     title: Model[i].name,
                     address_1: Model[i].address_1,
                     address_2: Model[i].address_2,
