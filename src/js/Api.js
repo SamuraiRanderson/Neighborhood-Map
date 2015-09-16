@@ -81,23 +81,17 @@ $.each(locations, function(i,u){ // ** u = url **
 // ** time on this and it's extremely discouraging/frustrating!!    ** //
 
 			model.push({pic: response.data[i].images.low_resolution.url});
-			//console.table(model);
+			console.table(model);
 			$pics.append('<img src=' + response.data[i].images.low_resolution.url + ' width=200px height=200px>');
 
 			clearTimeout(instagramRequestTO);
-
 	}
-console.table(model)
+
 });
-
-
 });
 
 return false;
 
 }
-
-
-
 
 $(loadData);
