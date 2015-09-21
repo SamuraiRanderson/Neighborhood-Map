@@ -21,8 +21,7 @@ var Model = [
           url: 'http://www.thecedarssocial.com', locationId: 236668314}
 ];
 
-
-var ViewModel = function () {
+var ViewModel = function (){
 
      var self = this;
 
@@ -32,7 +31,7 @@ var ViewModel = function () {
 
 // ** Instagram API ** //
 
-     function loadData() {
+     function loadData(){
 
 // ** locations array holds the url to be passed into the ajax call ** //
           var url = 'https://api.instagram.com/v1/locations/';
@@ -54,15 +53,13 @@ var ViewModel = function () {
                cache: false,
                jasonp: "callback",
                asynch: false,
-               success: function (response) {
+               success: function (response){
                     self.markerList()[i].pic = response.data[i].images.low_resolution.url;
 
                clearTimeout(instagramRequestTO);
 
                }
-
           });
-
      });
 
      return false;
@@ -81,7 +78,7 @@ $(loadData);
 // ** Adding the markers to the map for each location in the array. **  //
 
      var marker;
-          for (var i = 0; i < Model.length; i ++) {
+          for (var i = 0; i < Model.length; i ++){
                marker = new google.maps.Marker({
                     position: new google.maps.LatLng(Model[i].lat, Model[i].lng),
                     map: map,
@@ -109,7 +106,7 @@ $(loadData);
 //
 // ** m = the Google Maps marker passed to this function ** //
 
-     function displayInfoAndBounce(m) {
+     function displayInfoAndBounce(m){
           infoWindow.setContent('<h2>' + m.title + '</h2>' + m.address_1 +
                '<br>' + m.address_2 + '<br>' + m.phone + '</br>' +
                '<a href=' + m.url + '>' + m.url + '</a>' + '<br>' + '<img src=' + m.pic + '>' + '</br>');
@@ -118,7 +115,7 @@ $(loadData);
 
 // ** Sets the marker in motion by checking it's status and animating it if it's idle. ** //
 
-          if (m.getAnimation() !== null) {
+          if (m.getAnimation() !== null){
                m.setAnimation(null);
           } else {
                m.setAnimation(google.maps.Animation.BOUNCE);
@@ -128,11 +125,11 @@ $(loadData);
 
           map.panTo(m.position);
 
-          }
+     }
 
 // ** setTimeout() added to keep the markers from bouncing infinitely and set timing ** //
 
-     function stopAnimation(m) {
+     function stopAnimation(m){
           setTimeout (function(){
                m.setAnimation(null);
           }, 3500);
@@ -140,7 +137,7 @@ $(loadData);
 
 // ** Filter/Search functionality ** //
 
-     self.filter = function() {
+     self.filter = function(){
 
 // ** Taking the value of var str input into #filter and using .replace ** //
 // ** to replace the begining lowercase letters of a word with their value ** //
@@ -148,7 +145,7 @@ $(loadData);
 
           var str = $('#filter').val();
 
-          str = str.toLowerCase().replace(/\b[a-z]/g, function(self) {
+          str = str.toLowerCase().replace(/\b[a-z]/g, function(self){
                return self.toUpperCase();
           });
 
@@ -161,7 +158,6 @@ $(loadData);
           for(var i = 0; i < self.markerList().length; i++){
           self.markerList()[i].setMap(self.markerList()[i].title.search(str) > -1 ? map : null);
           }
-
      };
 
 // ** Add locations from array to the place list and the mobile dropdown-menu ** //
@@ -174,23 +170,22 @@ $(loadData);
 
 // ** 'click' binding for list ** //
 
-          $('#uiList .locList li a').last().bind('click', function(m) {
+          $('#uiList .locList li a').last().bind('click', function(m){
                return function () {
                     displayInfoAndBounce(m);
                     stopAnimation(m);
                };
 
-     }(marker));
+          }(marker));
 
 // ** Bind the click events for each map marker with the displayInfoAndBounce()function. ** //
 // ** We pass the Google Maps marker as a parameter to the function, so it knows where to move the map, ** //
 // ** what info to show, and identifies the marker to animate ** //
 
-     google.maps.event.addListener(marker, 'click', function() {
+     google.maps.event.addListener(marker, 'click', function(){
           displayInfoAndBounce(this);
           stopAnimation(this);
           });
-
      }
 };
 
