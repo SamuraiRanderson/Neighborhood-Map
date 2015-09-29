@@ -25,15 +25,14 @@ var ViewModel = function (){
 
      var self = this;
 
-// ** self.markerList is an empty array that is populated the markers ** //
+// ** self.markerList is an empty array that is populated the google map markers information ** //
 
      self.markerList = ko.observableArray([]);
 
-// ** Instagram API ** //
-
      function loadData(){
 
-// ** locations array holds the url to be passed into the ajax call ** //
+// ** locations array holds the instagram api url to be passed into the ajax call ** //
+
           var url = 'https://api.instagram.com/v1/locations/';
           var key = '/media/recent?access_token=1962684669.6f4a010.676642d0021149d7b7d58a8cec924c0d';
           var locations = [];
@@ -41,9 +40,17 @@ var ViewModel = function (){
                locations.push(url + Model[i].locationId + key);
                }
 
+// ** Var instagramRequestTO in the event of an ajax request error ** //
+
           var instagramRequestTO = setTimeout (function(){
-          $('imgData').text("Instagram information is not available at this time... Please try again later.");
+          $body.text("Instagram information is not available at this time... Please try again later.");
           }, 3000);
+
+          var $body = $('body');
+
+// ** ajax request ** //
+// **
+// ** u = instagram api urls to be passed into the ajax request ** //
 
      $.each(locations, function(i,u){
           $.ajax(u,
@@ -52,12 +59,10 @@ var ViewModel = function (){
                dataType: "jsonp",
                cache: false,
                jasonp: "callback",
-               asynch: false,
+               asynch: true,
                success: function (response){
                     self.markerList()[i].pic = response.data[i].images.low_resolution.url;
-
-               clearTimeout(instagramRequestTO);
-
+                    clearTimeout(instagramRequestTO);
                }
           });
      });
@@ -68,12 +73,14 @@ var ViewModel = function (){
 
 $(loadData);
 
+// ** Add custom marker icon to replace default google maps marker ** //
+
      var pinIcon = new google.maps.MarkerImage('images/pegasus.png', /* Custom map marker */
-                null, /* size is determined at runtime */
-                null, /* origin is 0,0 */
-                null, /* anchor is bottom center of the scaled image */
-                new google.maps.Size(42, 42)
-                );
+               null, /* size is determined at runtime */
+               null, /* origin is 0,0 */
+               null, /* anchor is bottom center of the scaled image */
+               new google.maps.Size(42, 42)
+               );
 
 // ** Adding the markers to the map for each location in the array. **  //
 
@@ -87,29 +94,35 @@ $(loadData);
                     address_1: Model[i].address_1,
                     address_2: Model[i].address_2,
                     phone: Model[i].phone,
-                    pic: Model[i].pic,
                     url: Model[i].url,
-                    locationId:'https://api.instagram.com/v1/locations/' + Model[i].locationId + '/media/recent?access_token=1962684669.6f4a010.676642d0021149d7b7d58a8cec924c0d',
                     animation: google.maps.Animation.DROP
                });
 
-          self.markerList.push(marker);
+          self.markerList.push(marker); // ** Populate self.markerList array with marker information ** //
 
 // ** Initialize the Google Maps InfoWindow for display, when needed. ** //
 
-     var infoWindow = new google.maps.InfoWindow();
+     var infoWindow = new google.maps.InfoWindow({
+          maxWidth: 250,
 
-// ** displayInfoAndBounce() is called when either an item clicked on in our list ** //
+     });
+
+     google.maps.event.addListener(infoWindow, 'domready', function () {
+        $('#div-main-infoWindow').closest('.gm-style-iw').parent().addClass('custom-iw');
+     });
+
+// ** activeMarker() is called when either an item clicked on in our list ** //
 // ** or when a marked location is clicked on the map. ** //
 //
-// ** infowindow content is set **
+// ** infowindow content is set ** //
 //
 // ** m = the Google Maps marker passed to this function ** //
 
-     function displayInfoAndBounce(m){
-          infoWindow.setContent('<h2>' + m.title + '</h2>' + m.address_1 +
-               '<br>' + m.address_2 + '<br>' + m.phone + '</br>' +
-               '<a href=' + m.url + '>' + m.url + '</a>' + '<br>' + '<img src=' + m.pic + '>' + '</br>');
+     function activeMarker(m){
+          infoWindow.setContent('<h1>' + m.title + '</h1>' + '<h2>' + m.address_1 +
+               '<br>' + m.address_2 + '<br>' + m.phone + '<br>' + '<br>' +
+               '<a href=' + m.url + '>' + m.url + '</a>' + '</h2>' + '<br>' +
+               '<img src=' + m.pic + ' height=150px width=150px>' + '</br>');
 
           infoWindow.open(map, m);
 
@@ -124,7 +137,6 @@ $(loadData);
 // ** Moves the map to the markers location and assigns the new current marker. ** //
 
           map.panTo(m.position);
-
      }
 
 // ** setTimeout() added to keep the markers from bouncing infinitely and set timing ** //
@@ -135,58 +147,65 @@ $(loadData);
           }, 3500);
      }
 
+// ** Google maps listener to animate markers when clicked ** //
+
+     google.maps.event.addListener(marker, 'click', function(){
+          activeMarker(this);
+          stopAnimation(this);
+          });
+
 // ** Filter/Search functionality ** //
 
      self.filter = function(){
+
+          var str = $('#filter').val();
 
 // ** Taking the value of var str input into #filter and using .replace ** //
 // ** to replace the begining lowercase letters of a word with their value ** //
 // ** capitialized. **//
 
-          var str = $('#filter').val();
-
           str = str.toLowerCase().replace(/\b[a-z]/g, function(self){
                return self.toUpperCase();
           });
 
-// ** Show/Hide list items depending on the text entered by user ** //
+// ** Show/Hide li based upon search input ** //
 
-          $(".locList > li").each(function(){
+          $(".dropdown-menu > li").each(function(){
                $(this).text().search(str) > -1 ? $(this).show() : $(this).hide();
           });
+
+// ** Show/Hide markers based upon search input ** //
 
           for(var i = 0; i < self.markerList().length; i++){
           self.markerList()[i].setMap(self.markerList()[i].title.search(str) > -1 ? map : null);
           }
      };
 
-// ** Add locations from array to the place list and the mobile dropdown-menu ** //
+// ** locations added to #uiList from Model ** //
 
-// ** locations added to #uiList ** //
-
-          $('#uiList .locList').append('<li><a>' + Model[i].name +
+          $('#uiList .dropdown-menu').append('<li><a>' + Model[i].name +
                '<br>' + Model[i].address_1 + '<br>' + Model[i].address_2 +
                '<br>' + Model[i].phone + '<br>' + '<hr>' + '</a></li>');
 
-// ** 'click' binding for list ** //
+// ** Bind the click events for each map marker with the activeMarker()function. ** //
+// ** We pass the Google Maps marker as a parameter to the function, so it knows where to move the map, ** //
+// ** what info to show, and identifies the marker to animate ** //
 
-          $('#uiList .locList li a').last().bind('click', function(m){
+          $('#uiList .dropdown-menu li a').last().bind('click', function(m){
                return function () {
-                    displayInfoAndBounce(m);
+                    activeMarker(m);
                     stopAnimation(m);
                };
 
           }(marker));
 
-// ** Bind the click events for each map marker with the displayInfoAndBounce()function. ** //
-// ** We pass the Google Maps marker as a parameter to the function, so it knows where to move the map, ** //
-// ** what info to show, and identifies the marker to animate ** //
-
-     google.maps.event.addListener(marker, 'click', function(){
-          displayInfoAndBounce(this);
-          stopAnimation(this);
-          });
      }
+
+// ** Dropdown click functionality ** //
+
+          $('#uiList').click(function () {
+               $('.dropdown-menu').toggle().addClass('slideDown');
+          });
 };
 
 //** Initialize Google Maps **//
@@ -194,6 +213,7 @@ $(loadData);
 var map = new google.maps.Map(document.getElementById('map-canvas'),{
       center: new google.maps.LatLng(32.789356, -96.801788),
       zoom: 13,
+      disableDefaultUI: true,
 });
 
 $(document).ready(function(){
