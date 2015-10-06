@@ -171,7 +171,11 @@ $(loadData);
 // ** Show/Hide li based upon search input ** //
 
           $(".dropdown-menu > li").each(function(){
-               $(this).text().search(str) > -1 ? $(this).show() : $(this).hide();
+               if ($(this).text().search(str) > -1) {
+                    $(this).show();
+               } else {
+                    $(this).hide();
+               }
           });
 
 // ** Show/Hide markers based upon search input ** //
