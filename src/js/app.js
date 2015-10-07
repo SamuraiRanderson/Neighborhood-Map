@@ -71,7 +71,7 @@ var ViewModel = function (){
 
      }
 
-$(loadData);
+     $(loadData);
 
 // ** Add custom marker icon to replace default google maps marker ** //
 
@@ -99,7 +99,7 @@ $(loadData);
                });
 
           self.markerList.push(marker); // ** Populate self.markerList array with marker information ** //
-console.table([self.markerList]);
+
 // ** Initialize the Google Maps InfoWindow for display, when needed. ** //
 
      var infoWindow = new google.maps.InfoWindow({
@@ -213,13 +213,15 @@ console.table([self.markerList]);
 };
 
 //** Initialize Google Maps **//
-
-var map = new google.maps.Map(document.getElementById('map-canvas'),{
+var map;
+function initMap(){
+ map = new google.maps.Map(document.getElementById('map-canvas'),{
       center: new google.maps.LatLng(32.789356, -96.801788),
       zoom: 13,
       disableDefaultUI: true,
 });
+}
 
-$(document).ready(function(){
-ko.applyBindings(new ViewModel());
+$(window).load(function() {
+    ko.applyBindings(new ViewModel());
 });
