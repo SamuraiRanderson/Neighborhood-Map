@@ -18,19 +18,7 @@ var Model = [
           {name: 'We are 1976', address_1: '313 N Bishop Ave', address_2: 'Dallas, TX 75208', phone: '(214) 821-1976', lat: 32.748334, lng: -96.829321,
           url: 'http://www.weare1976.com', locationId: 684487},
           {name: 'The Cedars Social', address_1: '1326 S Lamar', address_2: 'Dallas, TX 75215', phone: '(214) 928-7700', lat: 32.769119, lng: -96.795821,
-          url: 'http://www.thecedarssocial.com', locationId: 236668314},
-          // {name: 'Elbow Room', address_1: '3010 Gaston Ave', address_2: 'Dallas, TX 75226', phone: '(214) 828-9488', lat: 32.788590, lng:  -96.783126,
-          // url: 'http://elbowroomdallas.com', locationId: 671396451},
-          // {name: 'Omni Dallas Hotel', address_1: '555 S Lamar', address_2: 'Dallas, TX 75202', phone: '(214) 744-6664', lat: 32.775559, lng: -96.804319,
-          // url: 'http://www.omnihotels.com/hotels/dallas', locationId: 214007185},
-          // {name: 'The Joule', address_1: '1530 Main St', address_2: 'Dallas, TX 75201', phone: '(214) 748-1300', lat: 32.780980, lng: -96.798352,
-          // url: 'http://www.thejouledallas.com', locationId: 251340146},
-          // {name: 'Oddfellows', address_1: '316 W 7th St', address_2: 'Dallas, TX 75208', phone: '(214) 944-5958', lat: 32.748872, lng: -96.826812,
-          // url: 'http://oddfellowsdallas.com', locationId: 526179323},
-          // {name: 'The Old Monk', address_1: '2847 N Henderson Ave', address_2: 'Dallas, TX 75206', phone: '(214) 821-1880', lat: 32.820336, lng: -96.784939,
-          // url: 'http://www.oldmonkdallas.com', locationId: 641516672}
-          // // {name: 'The Cedars Social', address_1: '1326 S Lamar', address_2: 'Dallas, TX 75215', phone: '(214) 928-7700', lat: 32.769119, lng: -96.795821,
-          // // url: 'http://www.thecedarssocial.com', locationId: 236668314}
+          url: 'http://www.thecedarssocial.com', locationId: 236668314}
 ];
 
 var ViewModel = function (){
