@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Google Maps API -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCG5jspmR-34KGhhbwukSU6TSxvbQrbOm0&callback=initMap" async></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap" async></script>
 
         <title>Neighborhood Map</title>
 
@@ -28,16 +28,25 @@
 
         <div id="map-canvas" class="map"></div>
 
+        <div id=""
+
         <div class="search">
             <input type="submit" class="searchButton">
-            <input id="filter" data-bind="event: {keyup: filter}" class="searchTerm" type="text"
-            placeholder="Filter favorite places by name..." value=""></input>
+            <input id="filter" data-bind="textInput: query" class="searchTerm" type="text"
+            placeholder="Filter favorite places by name..."></input>
         </div>
 
         <div class="dropdown">
             <div id="nav-menu"><i class="fa fa-bars"></i><h3>Favorites</h3></div>
             <div id="uiList">
-                <ul class="dropdown-menu" role="menu"></ul>
+                <ul class="dropdown-menu" data-bind="foreach: searchArray" role="menu">
+                    <li class="list" data-bind="click: $root.listMarker">
+                        <span data-bind="text: title"></span><br>
+                        <span data-bind="text: address_1"></span><br>
+                        <span data-bind="text: address_2"></span><br>
+                        <span data-bind="text: phone"></span>
+                    </li><br><hr>
+                </ul>
             </div>
         </div>
 
