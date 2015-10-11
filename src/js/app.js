@@ -38,9 +38,10 @@ var ViewModel = function (){
           var url = 'https://api.instagram.com/v1/locations/';
           var key = '/media/recent?access_token=1962684669.6f4a010.676642d0021149d7b7d58a8cec924c0d';
           var locations = [];
-               for (var i = 0; i < Model.length; i++){
-               locations.push(url + Model[i].locationId + key);
-               }
+
+          for (var i = 0; i < Model.length; i++){
+          locations.push(url + Model[i].locationId + key);
+          }
 
 /* Var instagramRequestTO in the event of an ajax request error */
 
@@ -63,10 +64,10 @@ var ViewModel = function (){
                     success: function (response){
                          self.markerList()[i].pic = response.data[i].images.low_resolution.url;
                          clearTimeout(instagramRequestTO);
-                    },
-                    error: function(xhr, status, error){
-                         alert(xhr.responseText);
                     }
+                    /*error: function(xhr, status, error){
+                         alert(xhr.responseText);
+                    }*/
                });
           });
 
@@ -141,7 +142,7 @@ var ViewModel = function (){
 /* Map.panTo moves the map to the markers location and assigns the new current marker */
 
           map.panTo(m.position);
-     }
+     };
 
 /* setTimeout() added to keep the markers from bouncing infinitely and set timing */
 
