@@ -104,7 +104,7 @@ var ViewModel = function (){
 
           self.markerList.push(marker); /* Populate self.markerList array with marker information */
 
-/* Initialize the Google Maps InfoWindow for display, when needed */
+/* Initialize the Google Maps InfoWindow */
 
      var infoWindow = new google.maps.InfoWindow({
           maxWidth: 250,
