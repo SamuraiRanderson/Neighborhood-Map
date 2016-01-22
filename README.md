@@ -1,6 +1,6 @@
 ![P5 pegausus image](https://github.com/SamuraiRanderson/Neighborhood-Map/blob/master/images/pegasus.png)
 
-#Neighborhood Map
+#[Neighborhood Map](http://samurairanderson.github.io/Neighborhood-Map/)
 
 If you happen to be in Dallas and get a craving for some great food, a desire to peruse some eclectic shops, or would like to spend the day experiencing some amazing works of art, well, you're in luck because we have all of the above and this application will show you some great places.  
 
