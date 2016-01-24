@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 	notify = require('gulp-notify');
 
 
-// Minify JS and store the minifies JS files in the js dist folder.
+// Minify JS and store the minified JS files in the js dist folder.
 gulp.task('scripts', function() {
 	gulp.src('src/js/app.js')
 		.pipe(uglify())
