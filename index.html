@@ -30,13 +30,11 @@
 
         <div id="map-canvas" class="map"></div>
 
-        <div id=""
-
         <div class="search">
             <input type="submit" class="searchButton">
             <input id="filter" data-bind="textInput: query" class="searchTerm" type="text"
             placeholder="Filter favorite places by name..."></input>
-        </div>
+        </div><!-- Div search -->
 
         <div class="dropdown">
             <div id="nav-menu"><i class="fa fa-bars"></i><h3>Favorites</h3></div>
@@ -49,20 +47,16 @@
                         <span data-bind="text: phone"></span>
                     </li><br><hr>
                 </ul>
-            </div>
-        </div>
-
-        <!-- Knockout.js -->
-        <script src="src/js/knockout-3.3.0.js"></script>
+            </div> <!-- Div uiList -->
+        </div><!-- Div dropdown -->
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-        <!-- Bootstrap -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="src/js/app.js"></script>
 
-        <!-- Custom Javascript -->
-        <script src="dist/js/app.min.js"></script>
+        <!-- Knockout.js -->
+        <script src="src/js/knockout-3.3.0.js"></script>
 
     </body>
 
