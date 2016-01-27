@@ -25,4 +25,3 @@ Neighborhood Map is a single page application that utilizes the Google Maps API,
 <li>Gulp
 
 ![Home image](images/P5.png)
-![Mobile Home image](images/P5-mobile.png)
