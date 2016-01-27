@@ -1,4 +1,4 @@
-![P5 pegausus image](http://samurairanderson.github.io/Neighborhood-Map/)
+![P5 pegausus image](images/pegasus.png)
 
 #[Neighborhood Map](http://samurairanderson.github.io/Neighborhood-Map/)
 
@@ -25,4 +25,4 @@ Neighborhood Map is a single page application that utilizes the Google Maps API,
 <li>Gulp
 
 ![Home image](images/P5.png)
-![Mobile Home image](P5-mobile.png)
+![Mobile Home image](images/P5-mobile.png)
