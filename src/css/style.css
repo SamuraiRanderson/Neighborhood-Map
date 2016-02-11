@@ -1,12 +1,12 @@
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	font-family: 'Droid Serif', serif;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+  font-family: 'Droid Serif', serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #map-canvas {
@@ -18,10 +18,11 @@ body {
 h1 {
   background: black;
   line-height: 36px;
-  margin: 10px 0px 10px 0px;
-  font-size: 18px;
+  /*margin: 10px 0px 10px 0px;*/
+  font-size: 20px;
   text-align: center;
   color: #f17721;
+  padding: 10px;
 }
 
 h2 {
@@ -104,18 +105,12 @@ h4 {
 .fa-bars {
   display: none;
 }
-/* NEW KNOCKOUT VERSION DROPDOWN */
-ul.dropdown-menu.slideDown {
-  padding: 0px;
-}
 
 li {
   list-style: none;
   width: 225px;
   height: 105px;
   color: whitesmoke;
-
-  font-weight: 400;
 }
 
 li a {
@@ -123,25 +118,6 @@ li a {
   width: 225px;
   color: whitesmoke;
 }
-
-li.list {
-  font-family: 'Droid Serif', serif;
-  list-style: none;
-  width: 225px;
-  height: 80px;
-  font-size: 12px;
-  padding: 15px 0px 3px 15px;
-  color: whitesmoke;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-li.list:hover {
-  letter-spacing: 0.03em;
-  background: black;
-  color: #f17721;
-}
-/* ^ NEW KNOCKOUT DROPDOWN VERSION ^ */
 
 a {
   color: black;
@@ -152,7 +128,6 @@ a:hover {
 }
 
 hr {
-  margin: 0px;
   border: 20px;
   color: whitesmoke;
   height: 1px;
@@ -284,7 +259,7 @@ hr {
     -webkit-transform: translateY(0%);
   }
 }
-/*-------------IPHONE 6 Plus------------*/
+/* ===== IPHONE 6 Plus ===== */
 /**/
 /**/
 /* iPhone 6 Plus (portrait) */
@@ -352,7 +327,7 @@ h3 {
 
 }
 
-/*---------------------------------------------------------------- iPhone 6 Plus (landscape) */
+/* ===== iPhone 6 Plus (landscape) ===== */
 @media only screen
 and (min-device-width : 414px)
 and (max-device-width : 736px)
@@ -412,7 +387,7 @@ h3 {
 
 }
 
-/*-------------IPHONE 6------------*/
+/* ===== IPHONE 6 ===== */
 /**/
 /**/
 /* iPhone 6 (portrait) */
@@ -480,7 +455,7 @@ h3 {
 
 }
 
-/*---------------------------------------------------------------- iPhone 6 (landscape) */
+/* ===== iPhone 6 (landscape) ===== */
 
 @media only screen and (min-device-width: 375px)
   and (max-device-width: 667px)
@@ -544,7 +519,7 @@ h3 {
 
 }
 
-/*-------------IPHONE 5------------*/
+/* ===== IPHONE 5 ===== */
 /**/
 /**/
 /* iPhone 5 (portrait) */
@@ -612,7 +587,7 @@ h3 {
 
 }
 
-/*---------------------------------------------------------------- iPhone 5 (landscape) */
+/* ===== iPhone 5 (landscape) ===== */
 
 @media only screen
   and (min-device-width: 320px)
@@ -677,7 +652,7 @@ h3 {
 
 }
 
-/*-------------IPHONE 4------------*/
+/* ===== IPHONE 4 ===== */
 /**/
 /**/
 /* iPhone 4 (portrait) */
@@ -694,7 +669,7 @@ h3 {
 
 }
 
-/*---------------------------------------------------------------- iphone 4 (landscape) */
+/* ===== iphone 4 (landscape) ===== */
 
 @media only screen
   and (min-device-width: 320px)
@@ -759,8 +734,3 @@ h3 {
 }
 
 }
-
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) { /* STYLES GO HERE */}
