@@ -5,21 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Google Maps API -->
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG5jspmR-34KGhhbwukSU6TSxvbQrbOm0&callback=initMap">
-        </script>
-
         <title>Neighborhood Map</title>
 
         <!-- Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
 
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" >
 
         <!-- Font-Awesome -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="dist/css/style.min.css" rel="stylesheet">
@@ -32,32 +27,31 @@
 
         <div class="search">
             <input type="submit" class="searchButton">
-            <input id="filter" data-bind="textInput: query" class="searchTerm" type="text"
-            placeholder="Filter favorite places by name..."></input>
+            <input id="filter" data-bind="event: {keyup: filter}" class="searchTerm" type="text"
+            placeholder="Filter favorite places by name..." value=""></input>
         </div>
 
         <div class="dropdown">
             <div id="nav-menu"><i class="fa fa-bars"></i><h3>Favorites</h3></div>
             <div id="uiList">
-                <ul class="dropdown-menu" data-bind="foreach: searchArray" role="menu">
-                    <li class="list" data-bind="click: $root.listMarker">
-                        <span data-bind="text: title"></span><br>
-                        <span data-bind="text: address_1"></span><br>
-                        <span data-bind="text: address_2"></span><br>
-                        <span data-bind="text: phone"></span>
-                    </li><br><hr>
-                </ul>
-            </div><!-- Div uiList -->
-        </div><!-- Div dropdown -->
+                <ul class="dropdown-menu" role="menu"></ul>
+            </div>
+        </div>
 
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCG5jspmR-34KGhhbwukSU6TSxvbQrbOm0&libraries=places"></script>
 
-        <!-- Custom Javascript -->
-        <script src="dist/js/app.min.js"></script>
+    <!-- Knockout.js -->
+    <script src="dist/js/knockout-3.3.0.js"></script>
 
-        <!-- Knockout.js -->
-        <script src="src/js/knockout-3.3.0.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script src="dist/js/app.min.js"></script>
 
     </body>
 
