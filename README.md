@@ -16,6 +16,7 @@ Neighborhood Map is a single page application that utilizes Google Maps API, and
 * CSS3
 * Javascript
 * jQuery
+* JSON
 * Knockout.js
 * Google Maps API
 * Instagram API
