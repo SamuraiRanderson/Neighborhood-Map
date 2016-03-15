@@ -2,7 +2,7 @@
 
 Neighborhood Map is a single page application that utilizes Google Maps API, and Instagram's API, to showcase some fantastic locations in Dallas, TX.
 
-###Easy to use features
+###Easy to use features:
 
 1) Click [**here**](http://samurairanderson.github.io/Neighborhood-Map/) to view a map of Dallas, TX.<br>
 2) You can explore locations by either clicking a map marker _or_ clicking on the box titled "Favorites" to activate a dropdown of some of my favorite locations in Dallas.<br>
